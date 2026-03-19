@@ -1,6 +1,7 @@
 class Bubble:
     def bubble_sort(self, arr: list[int]) -> list[int]:
         n: int = len(arr)
+        didSwap = False
 
         # Outer loop controls number of passes
         # After each pass, the largest element "bubbles up" to its correct position at the end
@@ -16,6 +17,10 @@ class Bubble:
                     # Swap if elements are in wrong order
                     # This pushes the larger element one step toward the end
                     arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                    didSwap = True
+
+            if didSwap == False:
+                break            # for the case when the array is already sorted and time complexity beomes O(n) not O(n^2)
 
         # After all passes, array becomes sorted
         return arr
